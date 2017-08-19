@@ -1,6 +1,8 @@
 #include "randomness.h"
 
-Randomness::Randomness()
-{
+namespace spaceDragons{
+    Randomness::Randomness()
+    {
 
+    }
 }

@@ -3,6 +3,7 @@
 
 #include <QPushButton>
 
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -14,10 +15,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
 //sets random message & buttons
 void MainWindow::getNextPage(){
-    clearButtons();
-    setMessage("in SPACE");
-    setButton("continue");
-    setButton("no");
+    //get random number, decide environment screen, battle, or item
+    //for battle:
+    //get random number for monster
+    //create monster from Monster class
+    //create instance of fight, passing in Monster
 }
 
 void MainWindow::setMessage(std::string message){
