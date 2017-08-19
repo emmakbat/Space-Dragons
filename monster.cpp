@@ -4,7 +4,7 @@
 
 namespace spaceDragons{
 
-    Monster::Monster(int id)
+    Monster::Monster(int id, int mod)
     {
 
     }

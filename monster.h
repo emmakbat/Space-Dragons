@@ -17,7 +17,7 @@ namespace spaceDragons{
     class Monster
     {
     public:
-        Monster(int id);
+        Monster(int id, int mod);
 
         //attributes populated from map
         std::string species;
@@ -31,9 +31,10 @@ namespace spaceDragons{
         int attackDamage;
         int specialDamage;
         int defenseSubtraction;
+        bool defending;
 
-        bool monsterTurn;
-        std::string actionTaken;
+        //returns: attack, special, defense, or wait
+        std::string monsterTurn();
 
     private:
 

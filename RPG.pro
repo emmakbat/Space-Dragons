@@ -27,12 +27,14 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     randomness.cpp \
-    monster.cpp
+    monster.cpp \
+    environments.cpp
 
 HEADERS += \
         mainwindow.h \
     randomness.h \
-    monster.h
+    monster.h \
+    environments.h
 
 FORMS += \
         mainwindow.ui

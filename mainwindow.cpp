@@ -1,8 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "environments.h"
 
 #include <QPushButton>
-
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -20,6 +20,12 @@ void MainWindow::getNextPage(){
     //get random number for monster
     //create monster from Monster class
     //create instance of fight, passing in Monster
+    clearButtons();
+    int id = rand() % 11;
+    spaceDragons::Environments environment(id);
+    setMessage(environment.getMessage());
+    setButton("go left");
+    setButton("go right");
 }
 
 void MainWindow::setMessage(std::string message){
