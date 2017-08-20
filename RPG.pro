@@ -28,13 +28,23 @@ SOURCES += \
         mainwindow.cpp \
     randomness.cpp \
     monster.cpp \
-    environments.cpp
+    environments.cpp \
+    player.cpp \
+    fight.cpp \
+    fightwindow.cpp \
+    modifiers.cpp
 
 HEADERS += \
         mainwindow.h \
     randomness.h \
     monster.h \
-    environments.h
+    environments.h \
+    player.h \
+    fight.h \
+    fightwindow.h \
+    modifiers.h \
+    attributes.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    fightwindow.ui

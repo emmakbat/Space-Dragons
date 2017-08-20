@@ -1,8 +1,11 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "environments.h"
+#include "fightwindow.h"
 
 #include <QPushButton>
+#include <cstdlib>
+#include <ctime>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -21,11 +24,17 @@ void MainWindow::getNextPage(){
     //create monster from Monster class
     //create instance of fight, passing in Monster
     clearButtons();
-    int id = rand() % 11;
+
+    /*srand(time(NULL));
+    int id = rand() % 22;
     spaceDragons::Environments environment(id);
     setMessage(environment.getMessage());
     setButton("go left");
-    setButton("go right");
+    setButton("go right");*/
+    srand(time(NULL));
+    int id = rand() % 17;
+    FightWindow* fightWindow = new FightWindow;
+    fightWindow->show();
 }
 
 void MainWindow::setMessage(std::string message){
