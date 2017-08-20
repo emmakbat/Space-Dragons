@@ -16,7 +16,6 @@ namespace spaceDragons {
     std::string Fight::doFight(std::string turn, std::string action)
     {
         int dmg;
-        std::cout << turn << " " << action;
         if(turn == "player"){
             state = action;
             if(state == "attack") {
@@ -51,10 +50,13 @@ namespace spaceDragons {
         }
         else{
             state = monster.monsterTurn();
+            std::cout << state;
             if(state == "attack") {
                 if(!player.defending) {
                     dmg = rand() % 10 + (monster.attackDamage - 5);
                     player.hp -= dmg;
+                    std::string message = monster.species + " uses " + monster.attack;
+                    return message;
                 } else {
                     std::string message = "You have blocked " + monster.species + "'s attack!!";
                     return message;
@@ -63,6 +65,8 @@ namespace spaceDragons {
                 if(!player.defending) {
                     dmg = rand() % 10 + (monster.specialDamage - 10);
                     player.hp -= dmg;
+                    std::string message = monster.species + " uses " + monster.special;
+                    return message;
                 } else {
                     std::string message = "You have blocked " + monster.species + "'s attack!!";
                     return message;

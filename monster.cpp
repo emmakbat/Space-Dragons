@@ -6,6 +6,7 @@
 #include <sstream>
 #include <vector>
 #include <string>
+#include <iostream>
 
 namespace spaceDragons{
 
@@ -16,7 +17,9 @@ namespace spaceDragons{
         attackDamage = 10*(mod / 2 +1);
         specialDamage = 20*(mod / 2 +1);
 
-        populateMonsters();
+        if(monsters.find(0) == monsters.end()){
+            populateMonsters();
+        }
         species = monsters[id].species;
         attack = monsters[id].attack;
         special = monsters[id].special;
@@ -25,8 +28,7 @@ namespace spaceDragons{
     }
 
     void Monster::populateMonsters(){
-        std::ifstream readMonsters("monsterVals");
-
+        std::ifstream readMonsters("C:\\Users\\emmab\\Documents\\Space-Dragons\\monsterVals.csv");
         int i = 0;
         attributes vals;
         while(readMonsters){
@@ -47,6 +49,7 @@ namespace spaceDragons{
             vals.waitText = values[4];
 
             monsters[i] = vals;
+            ++i;
         }
     }
     std::string Monster::monsterTurn(){

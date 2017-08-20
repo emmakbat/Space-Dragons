@@ -12,6 +12,8 @@ namespace spaceDragons{
     public:
         Fight(Monster& nmonster, Player& nplayer);
         std::string doFight(std::string turn, std::string action);
+        int getHP(){return player.hp;}
+
     private:
         Monster monster{0,0};
         Player player;

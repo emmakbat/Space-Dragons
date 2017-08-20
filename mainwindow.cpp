@@ -25,16 +25,21 @@ void MainWindow::getNextPage(){
     //create instance of fight, passing in Monster
     clearButtons();
 
-    /*srand(time(NULL));
-    int id = rand() % 22;
-    spaceDragons::Environments environment(id);
-    setMessage(environment.getMessage());
-    setButton("go left");
-    setButton("go right");*/
     srand(time(NULL));
-    int id = rand() % 17;
-    FightWindow* fightWindow = new FightWindow;
-    fightWindow->show();
+    int event = rand() % 11;
+
+    if(event <  9){
+        int id = rand() % 22;
+        spaceDragons::Environments environment(id);
+        setMessage(environment.getMessage());
+        setButton("go left");
+        setButton("go right");
+    }
+    else{
+        int id = rand() % 17;
+        FightWindow* fightWindow = new FightWindow;
+        fightWindow->show();
+    }
 }
 
 void MainWindow::setMessage(std::string message){

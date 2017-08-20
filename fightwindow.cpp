@@ -41,6 +41,8 @@ void FightWindow::continueFight(){
     ui->defendButton->setEnabled(true);
     ui->waitButton->setEnabled(true);
     ui->okButton->setEnabled(false);
+
+    ui->hpBar->setValue(fight.getHP());
 }
 
 FightWindow::~FightWindow()
