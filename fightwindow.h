@@ -17,8 +17,9 @@ class FightWindow : public QWidget
 
 public:
     explicit FightWindow(QWidget *parent = 0);
-    void setMonster(spaceDragons::Monster nmonster){monster = nmonster;}
-    void setPlayer(spaceDragons::Player nplayer){player = nplayer;}
+    //void setMonster(spaceDragons::Monster nmonster){monster = nmonster;}
+    //void setPlayer(spaceDragons::Player nplayer){player = nplayer;}
+    //void fightInit(){fight = spaceDragons::Fight(monster, player);
     ~FightWindow();
 
 private:

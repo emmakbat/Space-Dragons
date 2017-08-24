@@ -7,6 +7,8 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 
 namespace spaceDragons{
 
@@ -29,7 +31,7 @@ namespace spaceDragons{
     }
 
     void Monster::populateMonsters(){
-        std::ifstream readMonsters("C:\\Users\\emmab\\Documents\\Space-Dragons\\resources\\monsterVals.csv");
+        std::ifstream readMonsters(".\\resources\\monsterVals.csv");
         int i = 0;
         attributes vals;
         while(readMonsters){
@@ -55,6 +57,36 @@ namespace spaceDragons{
         }
     }
     std::string Monster::monsterTurn(){
-        return "attack";
+        srand(time(NULL));
+        if(hp > 70){
+            int move = rand() % 40;
+            if(move < 20){
+                return "attack";
+            }
+            else if(move < 30){
+                return "defend";
+            }
+            else if(move < 39){
+                return "special";
+            }
+            else{
+                return "wait";
+            }
+        }
+        else{
+            int move = rand() % 40;
+            if(move < 10){
+                return "attack";
+            }
+            else if(move < 25){
+                return "defend";
+            }
+            else if(move < 39){
+                return "special";
+            }
+            else{
+                return "wait";
+            }
+        }
     }
 }

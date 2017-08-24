@@ -27,6 +27,7 @@ namespace spaceDragons {
         int dmg;
         if(turn == "player"){
             state = action;
+            player.defending = false;
             if(state == "attack") {
                 if(!monster.defending) {
                     dmg = rand() % 10 + (player.attackDamage - 5);
@@ -48,7 +49,8 @@ namespace spaceDragons {
                     return message;
                 }
             } else if(state == "defend") {
-                std::string message = "Player uses " + player.defense + "!!";
+                std::string message = "Player uses " + player.defense + "!! You avoid all damage!";
+                player.defending = true;
                 return message;
             } else {
                 std::string message = "Player " + player.waitText + ".";
@@ -57,6 +59,7 @@ namespace spaceDragons {
         }
         else{
             state = monster.monsterTurn();
+            monster.defending = false;
             if(state == "attack") {
                 if(!player.defending) {
                     dmg = rand() % 10 + (monster.attackDamage - 5);
@@ -79,6 +82,7 @@ namespace spaceDragons {
                 }
             } else if(state == "defend") {
                 std::string message = monster.species + " uses " + monster.defense + "!!";
+                monster.defending = true;
                 return message;
             } else {
                 std::string message = monster.species + " " + monster.waitText + ".";

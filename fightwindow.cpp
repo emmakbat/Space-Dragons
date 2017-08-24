@@ -6,6 +6,8 @@
 
 #include <QPixmap>
 #include <string>
+#include <cstdlib>
+#include <ctime>
 
 #include <iostream>
 
@@ -13,10 +15,16 @@ FightWindow::FightWindow(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::FightWindow)
 {
+    srand(time(NULL));
+    int id = rand() % 17;
+
+    monster = spaceDragons::Monster(id,0);
+    fight = spaceDragons::Fight(monster, player);
+
     ui->setupUi(this);
     ui->messageBox->setText("The fight begins!");
 
-    QPixmap pic("C:\\Users\\emmab\\Documents\\Space-Dragons\\resources\\behir.jpg");
+    QPixmap pic(".\\resources\\" + QString::fromStdString(monster.image));
     ui->monsterDisplay->setScaledContents(true);
     ui->monsterDisplay->setPixmap(pic);
 
