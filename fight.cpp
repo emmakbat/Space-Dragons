@@ -15,6 +15,15 @@ namespace spaceDragons {
 
     std::string Fight::doFight(std::string turn, std::string action)
     {
+        if(monster.hp <= 0) {
+            std::string message = monster.species + " has been defeated!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
+            return message;
+        }
+        if(player.hp <= 0) {
+            std::string message = "Player has been defeated!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
+            return message;
+        }
+
         int dmg;
         if(turn == "player"){
             state = action;
@@ -22,7 +31,8 @@ namespace spaceDragons {
                 if(!monster.defending) {
                     dmg = rand() % 10 + (player.attackDamage - 5);
                     monster.hp -= dmg;
-                    return player.attack;
+                    std::string message = player.attack + std::string("\n You did ") + std::to_string(dmg) + std::string(" damage!");
+                    return message;
                 } else {
                     std::string message = monster.species + " has blocked your attack!!";
                     return message;
@@ -31,7 +41,8 @@ namespace spaceDragons {
                 if(!monster.defending) {
                     dmg = rand() % 10 + (player.specialDamage - 10);
                     monster.hp -= dmg;
-                    return player.special;
+                    std::string message = player.special + std::string("\n You did ") + std::to_string(dmg) + std::string(" damage! Wow!");
+                    return message;
                 } else {
                     std::string message = monster.species + " has blocked your attack!!";
                     return message;
@@ -43,14 +54,9 @@ namespace spaceDragons {
                 std::string message = "Player " + player.waitText + ".";
                 return message;
             }
-            if(monster.hp <= 0) {
-                std::string message = monster.species + " has been defeated!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
-                return message;
-            }
         }
         else{
             state = monster.monsterTurn();
-            std::cout << state;
             if(state == "attack") {
                 if(!player.defending) {
                     dmg = rand() % 10 + (monster.attackDamage - 5);
@@ -76,10 +82,6 @@ namespace spaceDragons {
                 return message;
             } else {
                 std::string message = monster.species + " " + monster.waitText + ".";
-                return message;
-            }
-            if(player.hp <= 0) {
-                std::string message = "Player has been defeated!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
                 return message;
             }
         }

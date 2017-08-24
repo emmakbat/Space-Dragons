@@ -11,8 +11,9 @@ namespace spaceDragons {
         std::string special;
         std::string defense;
         std::string waitText;
+        std::string image;
 
-        attributes():species(""),attack(""),special(""),defense(""),waitText(""){}
+        attributes():species(""),attack(""),special(""),defense(""),waitText(""),image(""){}
     };
 }
 

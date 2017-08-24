@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "environments.h"
 #include "fightwindow.h"
+#include "monster.h"
 
 #include <QPushButton>
 #include <cstdlib>
@@ -32,13 +33,33 @@ void MainWindow::getNextPage(){
         int id = rand() % 22;
         spaceDragons::Environments environment(id);
         setMessage(environment.getMessage());
-        setButton("go left");
-        setButton("go right");
+
+        int buttons = rand() % 10;
+
+        if(buttons == 0){
+            setButton("continue");
+        }
+        if(buttons >= 1){
+            setButton("go left");
+            setButton("go right");
+        }
+        if(buttons >= 4){
+            setButton("go forward");
+        }
+        if(buttons >= 8){
+            setButton("zigzag");
+        }
+        if(buttons == 10){
+            setButton("HYPERDRIVE");
+        }
     }
     else{
         int id = rand() % 17;
         FightWindow* fightWindow = new FightWindow;
         fightWindow->show();
+        clearButtons();
+        setMessage("Carry on");
+        setButton("continue");
     }
 }
 
@@ -48,6 +69,7 @@ void MainWindow::setMessage(std::string message){
 
 void MainWindow::setButton(std::string label){
     QPushButton *newButton = new QPushButton;
+    newButton->setMaximumWidth(250);
     newButton->setText(QString::fromStdString(label));
     ui->buttonSpace->addWidget(newButton);
     connect(newButton, &QPushButton::clicked, [=](){ this->getNextPage(); });
@@ -59,7 +81,6 @@ void MainWindow::clearButtons(){
     }
     while(auto item = ui->buttonSpace->takeAt(0)){
         delete item->widget();
-        //clearWidgets(item->layout());
     }
 }
 

@@ -18,6 +18,7 @@ namespace spaceDragons{
         std::string special;
         std::string defense;
         std::string waitText;
+        std::string image;
 
         std::string modifier;
 

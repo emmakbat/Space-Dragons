@@ -25,10 +25,11 @@ namespace spaceDragons{
         special = monsters[id].special;
         defense = monsters[id].defense;
         waitText = monsters[id].waitText;
+        image = monsters[id].image;
     }
 
     void Monster::populateMonsters(){
-        std::ifstream readMonsters("C:\\Users\\emmab\\Documents\\Space-Dragons\\monsterVals.csv");
+        std::ifstream readMonsters("C:\\Users\\emmab\\Documents\\Space-Dragons\\resources\\monsterVals.csv");
         int i = 0;
         attributes vals;
         while(readMonsters){
@@ -47,6 +48,7 @@ namespace spaceDragons{
             vals.special = values[2];
             vals.defense = values[3];
             vals.waitText = values[4];
+            vals.image = values[5];
 
             monsters[i] = vals;
             ++i;
